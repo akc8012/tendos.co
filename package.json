@@ -6,11 +6,27 @@
     "preact": "^10.4.6"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.2",
+    "@types/jest": "^26.0.7",
+    "jest": "^26.1.0",
+    "jest-extended": "^0.11.5",
+    "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url ./",
+    "build": "parcel build src/index.html --public-url ./ --no-source-maps",
     "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/testSetup.ts"
+    ]
   }
 }
