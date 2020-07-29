@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": [
+        "./*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}
