@@ -1,0 +1,16 @@
+{
+  "name": "tendos.co",
+  "version": "0.1.0",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "preact": "^10.4.6"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./",
+    "test": "jest"
+  }
+}
