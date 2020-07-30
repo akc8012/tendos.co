@@ -36,9 +36,12 @@ function App() {
 				</div>
 
 				<div class='container'>
-					<h1 class='title is-1 has-text-centered has-text-danger'>
-						{countdown}
+					<h1 class='title is-1 has-text-weight-light has-text-centered'>
+						The neoTendos revolution
 					</h1>
+					<h4 class='subtitle is-4 has-text-danger has-text-weight-semibold has-text-centered'>
+						{countdown}
+					</h4>
 				</div>
 			</section>
 		</div>
