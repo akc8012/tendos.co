@@ -31,7 +31,7 @@ function App() {
 					</h2>
 
 					<h6 class='subtitle is-6 has-text-centered'>
-						A <b>Nintendo</b> podcast about <b>Nintendo</b>, buy <b>Nintendo</b>, for <b>Nintendo</b>.
+						A <Nintendo class='has-text-danger' /> podcast about <Nintendo class='' />, buy <Nintendo class='' />, for <Nintendo class='' />.
 					</h6>
 				</div>
 
@@ -39,13 +39,17 @@ function App() {
 					<h1 class='title is-1 has-text-weight-light has-text-centered'>
 						The neoTendos revolution
 					</h1>
-					<h4 class='subtitle is-4 has-text-danger has-text-weight-semibold has-text-centered'>
+					<h5 class='subtitle is-5 has-text-danger is-family-monospace has-text-weight-bold has-text-centered'>
 						{countdown}
-					</h4>
+					</h5>
 				</div>
 			</section>
 		</div>
 	);
+}
+
+function Nintendo(props: { class: string }) {
+	return <b class={props.class}>Nintendo</b>;
 }
 
 render(<App />, document.body);
