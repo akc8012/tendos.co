@@ -25,5 +25,4 @@ jobs:
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./dist
-          # TODO: cname boi!
-          # cname: tendos.co
+          cname: tendos.co
