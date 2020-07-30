@@ -13,7 +13,7 @@ function App() {
 					</h2>
 
 					<h6 class="subtitle is-6 has-text-centered">
-						<i>A <b>Nintendo</b> podcast about <b>Nintendo</b>, buy <b>Nintendo</b>, for <b>Nintendo</b>.</i>
+						A <b>Nintendo</b> podcast about <b>Nintendo</b>, buy <b>Nintendo</b>, for <b>Nintendo</b>.
 					</h6>
 				</div>
 			</section>
