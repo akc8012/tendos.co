@@ -31,7 +31,7 @@ function App() {
 					</h2>
 
 					<h6 class='subtitle is-6 has-text-centered'>
-						A <Nintendo class='has-text-danger' /> podcast about <Nintendo class='' />, buy <Nintendo class='' />, for <Nintendo class='' />.
+						A  <b class='has-text-danger'>Nintendo</b> podcast about <b>Nintendo</b>, buy <b>Nintendo</b>, for <b>Nintendo</b>.
 					</h6>
 				</div>
 
@@ -46,10 +46,6 @@ function App() {
 			</section>
 		</div>
 	);
-}
-
-function Nintendo(props: { class: string }) {
-	return <b class={props.class}>Nintendo</b>;
 }
 
 render(<App />, document.body);
