@@ -19,7 +19,7 @@ function App() {
 		const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 		const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-		setCountdown(`${days} day, ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+		setCountdown(`${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
 	}, 1000);
 
 	return (
