@@ -36,7 +36,11 @@ function App() {
 				</div>
 
 				<div class='container'>
-					<iframe src="https://tunein.com/embed/player/t139610612/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe>
+					{/* <iframe src="https://tunein.com/embed/player/t139610612/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe> */}
+					<audio controls>
+						<source src="https://raw.githubusercontent.com/akc8012/temp-tendos/master/tendos-ep100.mp3" type="audio/mpeg" />
+						Your browser does not support the audio element.
+					</audio>
 				</div>
 			</section>
 		</div>
