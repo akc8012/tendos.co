@@ -36,12 +36,7 @@ function App() {
 				</div>
 
 				<div class='container'>
-					<h1 class='title is-1 has-text-weight-light has-text-centered'>
-						The neoTendos revolution
-					</h1>
-					<h5 class='subtitle is-5 has-text-danger is-family-monospace has-text-weight-bold has-text-centered'>
-						{countdown}
-					</h5>
+					<iframe src="https://tunein.com/embed/player/t139610612/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe>
 				</div>
 			</section>
 		</div>
