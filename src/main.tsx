@@ -2,6 +2,7 @@ import './assets/style.scss';
 import 'bulma/css/bulma.css';
 
 import { h, render } from 'preact';
+import { initEasel } from './easel/initEasel';
 
 
 function App() {
@@ -32,3 +33,7 @@ function App() {
 }
 
 render(<App />, document.body);
+
+document.body.onload = function () {
+	initEasel();
+}
