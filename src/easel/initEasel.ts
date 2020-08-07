@@ -6,7 +6,7 @@ import flakeImage from '../assets/flake.png';
 
 let stage: any = undefined;
 let flakes: createjs.Bitmap[] = [];
-let velocities: number[] = [];
+let velocities: { x: number, y: number }[] = [];
 
 const FLAKE_COUNT = 10;
 const SCALE_FACTOR = 0.3;
@@ -17,7 +17,7 @@ export function initEasel() {
 	const flakes = createFlakes();
 	for (let flake of flakes) {
 		stage.addChild(flake);
-		velocities.push(randomArbitrary(-1.5, 1.5));
+		velocities.push({ x: randomArbitrary(-1.5, 1.5), y: randomArbitrary(-1.5, 1.5) });
 	}
 
 	console.log('my body is ready');
@@ -43,8 +43,8 @@ function createFlakes(): createjs.Bitmap[] {
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
 	for (let i = 0; i < flakes.length; i++) {
-		flakes[i].x += velocities[i];
-		flakes[i].y += velocities[i];
+		flakes[i].x += velocities[i].x;
+		flakes[i].y += velocities[i].y;
 
 		const flakeWidth = flakes[i].image.width * SCALE_FACTOR;
 		const flakeHeight = flakes[i].image.height * SCALE_FACTOR;
