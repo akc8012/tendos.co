@@ -5,7 +5,8 @@ import flakeImage from '../assets/flake.png';
 
 
 let stage: any = undefined;
-let flakeHeight: number = undefined;
+let flake: createjs.Bitmap = undefined;
+const SCALE_FACTOR = 0.3;
 
 export function initEasel() {
 	stage = createStage();
@@ -15,31 +16,30 @@ export function initEasel() {
 }
 
 function createFlake() {
-	const flake = new createjs.Bitmap(flakeImage);
-	flake.name = 'flake';
-
-	const scaleFactor = 0.2;
-	flakeHeight = flake.image.height * scaleFactor;
+	flake = new createjs.Bitmap(flakeImage)
 
 	flake.x = 20;
-	flake.y = 20; //stage.canvas.height;
-	// flake.scaleX = scaleFactor;
-	// flake.scaleY = scaleFactor;
+	flake.y = 20;
+
+	flake.scaleX = SCALE_FACTOR;
+	flake.scaleY = SCALE_FACTOR;
+	flake.rotation = -20;
 
 	return flake;
 }
 
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
-	// const flake = stage.getChildByName('flake');
+	flake.x += 1.5;
+	flake.y += 1.5;
 
-	// flake.x += 6;
-	// flake.y -= 10;
+	const flakeWidth = flake.image.width * SCALE_FACTOR;
+	const flakeHeight = flake.image.height * SCALE_FACTOR;
 
-	// if (flake.y + flakeHeight < 0) {
-	// 	stage.removeChild(flake);
-	// 	stage.addChild(createFlake());
-	// }
+	if (flake.x - flakeWidth > stage.canvas.width || flake.y - flakeHeight > stage.canvas.height) {
+		stage.removeChild(flake);
+		stage.addChild(createFlake());
+	}
 
 	stage.update();
 });
