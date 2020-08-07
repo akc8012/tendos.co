@@ -18,8 +18,8 @@ export function initEasel() {
 function createFlake() {
 	flake = new createjs.Bitmap(flakeImage)
 
-	flake.x = 20;
-	flake.y = 20;
+	flake.x = 300;
+	flake.y = 300;
 
 	flake.scaleX = SCALE_FACTOR;
 	flake.scaleY = SCALE_FACTOR;
@@ -31,7 +31,7 @@ function createFlake() {
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
 	flake.x += 6;
-	flake.y += 6;
+	flake.y -= 6;
 
 	const flakeWidth = flake.image.width * SCALE_FACTOR;
 	const flakeHeight = flake.image.height * SCALE_FACTOR;
@@ -39,8 +39,14 @@ createjs.Ticker.addEventListener('tick', function () {
 	if (flake.x - flakeWidth > stage.canvas.width)
 		flake.x = -flakeWidth;
 
+	if (flake.x < -flakeWidth)
+		flake.x = stage.canvas.width;
+
 	if (flake.y - flakeHeight > stage.canvas.height)
 		flake.y = -flakeHeight;
+
+	if (flake.y < -flakeHeight)
+		flake.y = stage.canvas.height;
 
 	stage.update();
 });
