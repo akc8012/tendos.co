@@ -30,16 +30,17 @@ function createFlake() {
 
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
-	flake.x += 1.5;
-	flake.y += 1.5;
+	flake.x += 6;
+	flake.y += 6;
 
 	const flakeWidth = flake.image.width * SCALE_FACTOR;
 	const flakeHeight = flake.image.height * SCALE_FACTOR;
 
-	if (flake.x - flakeWidth > stage.canvas.width || flake.y - flakeHeight > stage.canvas.height) {
-		stage.removeChild(flake);
-		stage.addChild(createFlake());
-	}
+	if (flake.x - flakeWidth > stage.canvas.width)
+		flake.x = -flakeWidth;
+
+	if (flake.y - flakeHeight > stage.canvas.height)
+		flake.y = -flakeHeight;
 
 	stage.update();
 });
