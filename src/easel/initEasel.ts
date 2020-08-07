@@ -17,10 +17,19 @@ export function initEasel() {
 	const flakes = createFlakes();
 	for (let flake of flakes) {
 		stage.addChild(flake);
-		velocities.push({ x: randomArbitrary(-1.5, 1.5), y: randomArbitrary(-1.5, 1.5) });
+
+		let randomVelocity = getRandomVelocity();
+		while (Math.abs(randomVelocity.x) < 0.8 || Math.abs(randomVelocity.y) < 0.8)
+			randomVelocity = getRandomVelocity();
+
+		velocities.push(randomVelocity);
 	}
 
 	console.log('my body is ready');
+}
+
+function getRandomVelocity() {
+	return { x: randomArbitrary(-2, 2), y: randomArbitrary(-2, 2) };
 }
 
 function createFlakes(): createjs.Bitmap[] {
@@ -30,8 +39,8 @@ function createFlakes(): createjs.Bitmap[] {
 		flake.x = randomArbitrary(0, stage.canvas.width);
 		flake.y = randomArbitrary(0, stage.canvas.height);
 
-		flake.scaleX = SCALE_FACTOR;
-		flake.scaleY = SCALE_FACTOR;
+		flake.scaleX = randomArbitrary(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
+		flake.scaleY = randomArbitrary(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
 		flake.rotation = randomArbitrary(0, 359);
 
 		flakes.push(flake);
