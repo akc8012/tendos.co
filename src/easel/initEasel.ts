@@ -23,15 +23,15 @@ function createFlake() {
 
 	flake.scaleX = SCALE_FACTOR;
 	flake.scaleY = SCALE_FACTOR;
-	flake.rotation = -20;
+	flake.rotation = randomArbitrary(0, 359);
 
 	return flake;
 }
 
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
-	flake.x += 6;
-	flake.y -= 6;
+	flake.x += 1.5;
+	flake.y += 1.5;
 
 	const flakeWidth = flake.image.width * SCALE_FACTOR;
 	const flakeHeight = flake.image.height * SCALE_FACTOR;
