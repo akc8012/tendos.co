@@ -9,7 +9,7 @@ let flakes: createjs.Bitmap[] = [];
 let velocities: { x: number, y: number }[] = [];
 
 const FLAKE_COUNT = 10;
-const SCALE_FACTOR = 0.3;
+const SCALE_FACTOR = 0.24;
 
 export function initEasel() {
 	stage = createStage();
