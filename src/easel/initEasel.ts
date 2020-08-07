@@ -6,6 +6,9 @@ import flakeImage from '../assets/flake.png';
 
 let stage: any = undefined;
 let flakes: createjs.Bitmap[] = [];
+let velocities: number[] = [];
+
+const FLAKE_COUNT = 10;
 const SCALE_FACTOR = 0.3;
 
 export function initEasel() {
@@ -14,13 +17,14 @@ export function initEasel() {
 	const flakes = createFlakes();
 	for (let flake of flakes) {
 		stage.addChild(flake);
+		velocities.push(randomArbitrary(-1.5, 1.5));
 	}
 
 	console.log('my body is ready');
 }
 
 function createFlakes(): createjs.Bitmap[] {
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < FLAKE_COUNT; i++) {
 		const flake = new createjs.Bitmap(flakeImage)
 
 		flake.x = randomArbitrary(0, stage.canvas.width);
@@ -38,24 +42,24 @@ function createFlakes(): createjs.Bitmap[] {
 
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
-	for (let flake of flakes) {
-		flake.x += 1.5;
-		flake.y += 1.5;
+	for (let i = 0; i < flakes.length; i++) {
+		flakes[i].x += velocities[i];
+		flakes[i].y += velocities[i];
 
-		const flakeWidth = flake.image.width * SCALE_FACTOR;
-		const flakeHeight = flake.image.height * SCALE_FACTOR;
+		const flakeWidth = flakes[i].image.width * SCALE_FACTOR;
+		const flakeHeight = flakes[i].image.height * SCALE_FACTOR;
 
-		if (flake.x - flakeWidth > stage.canvas.width)
-			flake.x = -flakeWidth;
+		if (flakes[i].x - flakeWidth > stage.canvas.width)
+			flakes[i].x = -flakeWidth;
 
-		if (flake.x < -flakeWidth)
-			flake.x = stage.canvas.width;
+		if (flakes[i].x < -flakeWidth)
+			flakes[i].x = stage.canvas.width;
 
-		if (flake.y - flakeHeight > stage.canvas.height)
-			flake.y = -flakeHeight;
+		if (flakes[i].y - flakeHeight > stage.canvas.height)
+			flakes[i].y = -flakeHeight;
 
-		if (flake.y < -flakeHeight)
-			flake.y = stage.canvas.height;
+		if (flakes[i].y < -flakeHeight)
+			flakes[i].y = stage.canvas.height;
 	}
 
 	stage.update();
