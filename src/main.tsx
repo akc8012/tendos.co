@@ -19,12 +19,13 @@ function App() {
 					</h6>
 				</div>
 
-				<div class='container'>
-					<h1 class='title is-1 has-text-weight-normal has-text-danger has-text-centered'>
-						The next episode of <b class='has-text-warning has-text-weight-medium'>neoTendos®</b> is <b>#CANCELLED</b>
+				<div class='container has-text-centered'>
+					<h1 class='title is-1 has-text-weight-light'>
+						The show <b class='has-text-weight-normal'>will</b> go on.
 					</h1>
-					<h4 class='subtitle is-4 has-text-centered'>
-						<b>@jonhall</b> and <b>@purdy</b> are flakes!
+					<h4 class='subtitle is-4'>
+						<b class='has-text-danger'>neoTendos</b> has been uncancelled.
+						Tune in at midnight for a special episode with <b>andrew</b> and <b>joeT</b>.
 					</h4>
 				</div>
 			</section>
