@@ -3,9 +3,26 @@ import 'bulma/css/bulma.css';
 
 import { h, render } from 'preact';
 import { initEasel } from './easel/initEasel';
+import { useState } from 'preact/hooks';
+import { useInterval } from './hooks/useInterval';
 
 
 function App() {
+	const [countdown, setCountdown] = useState(undefined);
+	const countdownDate = new Date('Aug 8, 2020 00:00:00').getTime();
+
+	useInterval(() => {
+		// https://www.w3schools.com/howto/howto_js_countdown.asp
+		const diff = countdownDate - new Date().getTime();
+
+		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+		setCountdown(`${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+	}, 1000);
+
 	return (
 		<div class='main'>
 			<section class='hero section is-dark'>
@@ -27,6 +44,9 @@ function App() {
 						<b class='has-text-danger'>neoTendos</b> has been uncancelled.
 						Tune in at midnight for a special episode with <b>andrew</b> and <b>joeT</b>.
 					</h4>
+					<h5 class='subtitle is-5 has-text-danger is-family-monospace has-text-weight-bold has-text-centered'>
+						{countdown}
+					</h5>
 				</div>
 			</section>
 		</div>
