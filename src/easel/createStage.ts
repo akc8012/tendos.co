@@ -11,9 +11,14 @@ export function createStage() {
 function createCanvas(): HTMLCanvasElement {
 	const canvas = document.createElement('canvas');
 
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	updateCanvasSize(canvas);
+	canvas.id = 'canvas';
 	canvas.className = 'canvas';
 
 	return canvas;
+}
+
+export function updateCanvasSize(canvas: HTMLCanvasElement) {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 }
