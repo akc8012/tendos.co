@@ -3,8 +3,8 @@ import 'bulma/css/bulma.css';
 
 import { h, render } from 'preact';
 import { App } from './components/App';
-import { initializeReggies } from './easel/initializeReggies';
-import { updateCanvasSize } from './easel/createStage';
+import { initializeReggies } from './canvas/initializeReggies';
+import { updateCanvasSize } from './canvas/createStage';
 
 
 render(<App />, document.body);
