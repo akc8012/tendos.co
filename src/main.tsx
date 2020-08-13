@@ -13,6 +13,6 @@ document.body.onload = function () {
 	initializeReggies();
 }
 
-window.onresize = function reportWindowSize() {
+window.onresize = function () {
 	updateCanvasSize(document.getElementById('canvas') as HTMLCanvasElement);
 }
