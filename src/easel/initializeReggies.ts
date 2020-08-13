@@ -4,21 +4,22 @@ import { random } from 'mathjs';
 
 import reggieImage from '../assets/reggie.png';
 
-// TODO: Move this to function-scope
-let stage: any = undefined;
 
 const REGGIE_COUNT = 8;
 const SCALE_FACTOR = 0.2;
+
 type Vector = { x: number, y: number };
+type Size = { width: number, height: number };
 
 export function initializeReggies() {
-	stage = createStage();
+	const stage = createStage();
+	const canvasSize = { width: stage.canvas.width, height: stage.canvas.height };
 
-	const reggies = createReggies();
+	const reggies = createReggies(canvasSize);
 	const velocities: Vector[] = [];
 
-	for (let flake of reggies) {
-		stage.addChild(flake);
+	for (let reggie of reggies) {
+		stage.addChild(reggie);
 
 		let randomVelocity = getRandomVelocity();
 		while (Math.abs(randomVelocity.x) < 0.8 || Math.abs(randomVelocity.y) < 0.8)
@@ -29,14 +30,14 @@ export function initializeReggies() {
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
-		updateReggies(reggies, velocities);
+		updateReggies(reggies, velocities, canvasSize);
 		stage.update();
 	});
 
 	console.log('my body is ready');
 }
 
-function updateReggies(reggies: createjs.Bitmap[], velocities: Vector[]) {
+function updateReggies(reggies: createjs.Bitmap[], velocities: Vector[], canvasSize: Size) {
 	for (let i = 0; i < reggies.length; i++) {
 		reggies[i].x += velocities[i].x;
 		reggies[i].y += velocities[i].y;
@@ -44,17 +45,17 @@ function updateReggies(reggies: createjs.Bitmap[], velocities: Vector[]) {
 		const flakeWidth = reggies[i].image.width * SCALE_FACTOR;
 		const flakeHeight = reggies[i].image.height * SCALE_FACTOR;
 
-		if (reggies[i].x - flakeWidth > stage.canvas.width)
+		if (reggies[i].x - flakeWidth > canvasSize.width)
 			reggies[i].x = -flakeWidth;
 
 		if (reggies[i].x < -flakeWidth)
-			reggies[i].x = stage.canvas.width;
+			reggies[i].x = canvasSize.width;
 
-		if (reggies[i].y - flakeHeight > stage.canvas.height)
+		if (reggies[i].y - flakeHeight > canvasSize.height)
 			reggies[i].y = -flakeHeight;
 
 		if (reggies[i].y < -flakeHeight)
-			reggies[i].y = stage.canvas.height;
+			reggies[i].y = canvasSize.height;
 	}
 }
 
@@ -62,14 +63,14 @@ function getRandomVelocity(): Vector {
 	return { x: random(-2, 2), y: random(-2, 2) };
 }
 
-function createReggies(): createjs.Bitmap[] {
+function createReggies(canvasSize: Size): createjs.Bitmap[] {
 	let reggies: createjs.Bitmap[] = [];
 
 	for (let i = 0; i < REGGIE_COUNT; i++) {
 		const flake = new createjs.Bitmap(reggieImage)
 
-		flake.x = random(0, stage.canvas.width);
-		flake.y = random(0, stage.canvas.height);
+		flake.x = random(0, canvasSize.width);
+		flake.y = random(0, canvasSize.height);
 
 		flake.scaleX = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
 		flake.scaleY = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
