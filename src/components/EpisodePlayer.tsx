@@ -7,7 +7,6 @@ export function EpisodePlayer(props: { filename: string }) {
 	return (
 		<audio controls>
 			<source src={baseUrl + props.filename} type='audio/mpeg' />
-			Your browser does not support the audio element.
 		</audio>
 	);
 }
