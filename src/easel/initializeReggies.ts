@@ -1,21 +1,22 @@
 import * as createjs from 'createjs-module';
 import { createStage } from './createStage';
 
-import flakeImage from '../assets/flake.png';
+import reggieImage from '../assets/reggie.png';
 
-
+// TODO: Move this to function-scope
 let stage: any = undefined;
-let flakes: createjs.Bitmap[] = [];
-let velocities: { x: number, y: number }[] = [];
 
-const FLAKE_COUNT = 8;
+const REGGIE_COUNT = 8;
 const SCALE_FACTOR = 0.2;
+type Vector = { x: number, y: number };
 
-export function initEasel() {
+export function initializeReggies() {
 	stage = createStage();
 
-	const flakes = createFlakes();
-	for (let flake of flakes) {
+	const reggies = createReggies();
+	const velocities: Vector[] = [];
+
+	for (let flake of reggies) {
 		stage.addChild(flake);
 
 		let randomVelocity = getRandomVelocity();
@@ -27,39 +28,44 @@ export function initEasel() {
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
-		for (let i = 0; i < flakes.length; i++) {
-			flakes[i].x += velocities[i].x;
-			flakes[i].y += velocities[i].y;
-
-			const flakeWidth = flakes[i].image.width * SCALE_FACTOR;
-			const flakeHeight = flakes[i].image.height * SCALE_FACTOR;
-
-			if (flakes[i].x - flakeWidth > stage.canvas.width)
-				flakes[i].x = -flakeWidth;
-
-			if (flakes[i].x < -flakeWidth)
-				flakes[i].x = stage.canvas.width;
-
-			if (flakes[i].y - flakeHeight > stage.canvas.height)
-				flakes[i].y = -flakeHeight;
-
-			if (flakes[i].y < -flakeHeight)
-				flakes[i].y = stage.canvas.height;
-		}
-
+		updateReggies(reggies, velocities);
 		stage.update();
 	});
 
 	console.log('my body is ready');
 }
 
-function getRandomVelocity() {
+function updateReggies(reggies: createjs.Bitmap[], velocities: Vector[]) {
+	for (let i = 0; i < reggies.length; i++) {
+		reggies[i].x += velocities[i].x;
+		reggies[i].y += velocities[i].y;
+
+		const flakeWidth = reggies[i].image.width * SCALE_FACTOR;
+		const flakeHeight = reggies[i].image.height * SCALE_FACTOR;
+
+		if (reggies[i].x - flakeWidth > stage.canvas.width)
+			reggies[i].x = -flakeWidth;
+
+		if (reggies[i].x < -flakeWidth)
+			reggies[i].x = stage.canvas.width;
+
+		if (reggies[i].y - flakeHeight > stage.canvas.height)
+			reggies[i].y = -flakeHeight;
+
+		if (reggies[i].y < -flakeHeight)
+			reggies[i].y = stage.canvas.height;
+	}
+}
+
+function getRandomVelocity(): Vector {
 	return { x: randomArbitrary(-2, 2), y: randomArbitrary(-2, 2) };
 }
 
-function createFlakes(): createjs.Bitmap[] {
-	for (let i = 0; i < FLAKE_COUNT; i++) {
-		const flake = new createjs.Bitmap(flakeImage)
+function createReggies(): createjs.Bitmap[] {
+	let reggies: createjs.Bitmap[] = [];
+
+	for (let i = 0; i < REGGIE_COUNT; i++) {
+		const flake = new createjs.Bitmap(reggieImage)
 
 		flake.x = randomArbitrary(0, stage.canvas.width);
 		flake.y = randomArbitrary(0, stage.canvas.height);
@@ -68,10 +74,10 @@ function createFlakes(): createjs.Bitmap[] {
 		flake.scaleY = randomArbitrary(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
 		flake.rotation = randomArbitrary(0, 359);
 
-		flakes.push(flake);
+		reggies.push(flake);
 	}
 
-	return flakes;
+	return reggies;
 }
 
 // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
