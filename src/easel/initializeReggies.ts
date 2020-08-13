@@ -1,5 +1,6 @@
 import * as createjs from 'createjs-module';
 import { createStage } from './createStage';
+import { random } from 'mathjs';
 
 import reggieImage from '../assets/reggie.png';
 
@@ -58,7 +59,7 @@ function updateReggies(reggies: createjs.Bitmap[], velocities: Vector[]) {
 }
 
 function getRandomVelocity(): Vector {
-	return { x: randomArbitrary(-2, 2), y: randomArbitrary(-2, 2) };
+	return { x: random(-2, 2), y: random(-2, 2) };
 }
 
 function createReggies(): createjs.Bitmap[] {
@@ -67,36 +68,15 @@ function createReggies(): createjs.Bitmap[] {
 	for (let i = 0; i < REGGIE_COUNT; i++) {
 		const flake = new createjs.Bitmap(reggieImage)
 
-		flake.x = randomArbitrary(0, stage.canvas.width);
-		flake.y = randomArbitrary(0, stage.canvas.height);
+		flake.x = random(0, stage.canvas.width);
+		flake.y = random(0, stage.canvas.height);
 
-		flake.scaleX = randomArbitrary(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
-		flake.scaleY = randomArbitrary(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
-		flake.rotation = randomArbitrary(0, 359);
+		flake.scaleX = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
+		flake.scaleY = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
+		flake.rotation = random(0, 359);
 
 		reggies.push(flake);
 	}
 
 	return reggies;
-}
-
-// https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
-/**
- * Returns a random number between min (inclusive) and max (exclusive)
- */
-function randomArbitrary(min: number, max: number) {
-	return Math.random() * (max - min) + min;
-}
-
-/**
- * Returns a random integer between min (inclusive) and max (inclusive).
- * The value is no lower than min (or the next integer greater than min
- * if min isn't an integer) and no greater than max (or the next integer
- * lower than max if max isn't an integer).
- * Using Math.round() will give you a non-uniform distribution!
- */
-function randomInt(min: number, max: number) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
