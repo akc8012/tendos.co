@@ -2,8 +2,9 @@ import './assets/style.scss';
 import 'bulma/css/bulma.css';
 
 import { h, render } from 'preact';
-import { EpisodePlayer } from './components/EpisodePlayer';
 import { Header } from './components/Header';
+import { EpisodeHeader } from './components/EpisodeHeader';
+import { EpisodePlayer } from './components/EpisodePlayer';
 import { Subtitle } from './components/Subtitle';
 
 
@@ -14,10 +15,7 @@ function App() {
 				<Header />
 
 				<div class='container has-text-centered'>
-					<h1 class='title is-1 has-text-weight-light'>
-						The show <b class='has-text-weight-normal'>will</b> go on.
-					</h1>
-
+					<EpisodeHeader />
 					<EpisodePlayer filename='tendos-episode101.mp3' />
 				</div>
 
