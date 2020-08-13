@@ -2,6 +2,7 @@ import './assets/style.scss';
 import 'bulma/css/bulma.css';
 
 import { h, render } from 'preact';
+import { EpisodePlayer } from './components/EpisodePlayer';
 
 
 function App() {
@@ -23,10 +24,7 @@ function App() {
 						The show <b class='has-text-weight-normal'>will</b> go on.
 					</h1>
 
-					<audio controls>
-						<source src='https://tendostore.nyc3.cdn.digitaloceanspaces.com/tendos-episode101.mp3' type='audio/mpeg' />
-						Your browser does not support the audio element.
-					</audio>
+					<EpisodePlayer filename='tendos-episode101.mp3' />
 				</div>
 
 				<div class='container has-text-centered'>
