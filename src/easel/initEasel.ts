@@ -25,6 +25,31 @@ export function initEasel() {
 		velocities.push(randomVelocity);
 	}
 
+	createjs.Ticker.framerate = 60;
+	createjs.Ticker.addEventListener('tick', function () {
+		for (let i = 0; i < flakes.length; i++) {
+			flakes[i].x += velocities[i].x;
+			flakes[i].y += velocities[i].y;
+
+			const flakeWidth = flakes[i].image.width * SCALE_FACTOR;
+			const flakeHeight = flakes[i].image.height * SCALE_FACTOR;
+
+			if (flakes[i].x - flakeWidth > stage.canvas.width)
+				flakes[i].x = -flakeWidth;
+
+			if (flakes[i].x < -flakeWidth)
+				flakes[i].x = stage.canvas.width;
+
+			if (flakes[i].y - flakeHeight > stage.canvas.height)
+				flakes[i].y = -flakeHeight;
+
+			if (flakes[i].y < -flakeHeight)
+				flakes[i].y = stage.canvas.height;
+		}
+
+		stage.update();
+	});
+
 	console.log('my body is ready');
 }
 
@@ -48,31 +73,6 @@ function createFlakes(): createjs.Bitmap[] {
 
 	return flakes;
 }
-
-createjs.Ticker.framerate = 60;
-createjs.Ticker.addEventListener('tick', function () {
-	for (let i = 0; i < flakes.length; i++) {
-		flakes[i].x += velocities[i].x;
-		flakes[i].y += velocities[i].y;
-
-		const flakeWidth = flakes[i].image.width * SCALE_FACTOR;
-		const flakeHeight = flakes[i].image.height * SCALE_FACTOR;
-
-		if (flakes[i].x - flakeWidth > stage.canvas.width)
-			flakes[i].x = -flakeWidth;
-
-		if (flakes[i].x < -flakeWidth)
-			flakes[i].x = stage.canvas.width;
-
-		if (flakes[i].y - flakeHeight > stage.canvas.height)
-			flakes[i].y = -flakeHeight;
-
-		if (flakes[i].y < -flakeHeight)
-			flakes[i].y = stage.canvas.height;
-	}
-
-	stage.update();
-});
 
 // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
 /**
