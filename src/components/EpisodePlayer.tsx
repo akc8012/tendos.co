@@ -1,7 +1,7 @@
 import { h } from 'preact';
 
 
-export function EpisodePlayer(props: { filename: string; }) {
+export function EpisodePlayer(props: { filename: string }) {
 	const baseUrl = 'https://tendostore.nyc3.cdn.digitaloceanspaces.com/';
 
 	return (
