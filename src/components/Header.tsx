@@ -5,7 +5,7 @@ export function Header() {
 	return (
 		<div class='container'>
 			<h2 class='title is-2 has-text-centered'>
-				The Tendos Podcast
+				The <span class='has-text-danger'>Tendos</span> Podcast
 			</h2>
 
 			<h6 class='subtitle is-6 has-text-centered'>
