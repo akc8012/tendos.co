@@ -24,7 +24,7 @@ export class Reggie implements IReggie {
 
 		this.bitmap.scaleX = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
 		this.bitmap.scaleY = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
-		this.bitmap.rotation = random(0, 359);
+		// this.bitmap.rotation = random(0, 359);
 
 		stage.addChild(this.bitmap);
 	}
@@ -35,13 +35,13 @@ export class Reggie implements IReggie {
 
 		const size = this.getSize();
 
-		if (this.bitmap.x - size.width > canvasSize.width)
+		if (this.bitmap.x > canvasSize.width)
 			this.bitmap.x = -size.width;
 
 		if (this.bitmap.x < -size.width)
 			this.bitmap.x = canvasSize.width;
 
-		if (this.bitmap.y - size.height > canvasSize.height)
+		if (this.bitmap.y > canvasSize.height)
 			this.bitmap.y = -size.height;
 
 		if (this.bitmap.y < -size.height)
