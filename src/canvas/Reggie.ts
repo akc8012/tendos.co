@@ -6,6 +6,7 @@ import reggieImage from '../assets/reggie.png';
 
 
 export const SCALE_FACTOR = 0.2;
+export const SCALE_RANDOMIZER = 0.01;
 
 export interface IReggie {
 	update: (canvasSize: Size) => void;
@@ -22,9 +23,15 @@ export class Reggie implements IReggie {
 		this.bitmap.x = random(0, canvasSize.width);
 		this.bitmap.y = random(0, canvasSize.height);
 
-		this.bitmap.scaleX = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
-		this.bitmap.scaleY = random(SCALE_FACTOR - 0.01, SCALE_FACTOR + 0.01);
-		this.bitmap.rotation = random(0, 359);
+		const scaleBounds = [
+			SCALE_FACTOR - SCALE_RANDOMIZER,
+			SCALE_FACTOR + SCALE_RANDOMIZER
+		];
+		this.bitmap.scaleX = random(scaleBounds[0], scaleBounds[1]);
+		this.bitmap.scaleY = random(scaleBounds[0], scaleBounds[1]);
+
+		// TODO: Fix this with math https://math.stackexchange.com/questions/60718/given-a-width-height-and-angle-of-a-rectangle-and-an-allowed-final-size-deter
+		// this.bitmap.rotation = random(0, 359);
 
 		stage.addChild(this.bitmap);
 	}
@@ -35,13 +42,13 @@ export class Reggie implements IReggie {
 
 		const size = this.getSize();
 
-		if (this.bitmap.x - size.width > canvasSize.width)
+		if (this.bitmap.x > canvasSize.width)
 			this.bitmap.x = -size.width;
 
 		if (this.bitmap.x < -size.width)
 			this.bitmap.x = canvasSize.width;
 
-		if (this.bitmap.y - size.height > canvasSize.height)
+		if (this.bitmap.y > canvasSize.height)
 			this.bitmap.y = -size.height;
 
 		if (this.bitmap.y < -size.height)
