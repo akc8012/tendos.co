@@ -8,7 +8,7 @@ import { Subtitle } from './Subtitle';
 export function App() {
 	return (
 		<div class='main'>
-			<section class='hero section' style={{ backgroundColor: 'hsl(0, 0%, 96%)' }}>
+			<section class='hero section is-dark'>
 				<Header />
 
 				<div class='container has-text-centered'>
