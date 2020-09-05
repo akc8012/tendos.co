@@ -13,14 +13,14 @@ export function App() {
 
 				<div class='container has-text-centered'>
 					<EpisodeHeader>
-						<b>Confirmed:</b> <b class='has-text-danger'>StarCraft 64</b> is coming to <b>Switch</b>
+						let's talk about <b class='has-text-danger'>super mario</b> for <b>30 minutes straight</b>
 					</EpisodeHeader>
 
-					<EpisodePlayer filename='tendos-episode104.mp3' />
+					<EpisodePlayer filename='tendos-episode105.mp3' />
 				</div>
 
 				<Subtitle>
-					listen in. it's the benny episode.
+					this is a <i>limited release</i> podcast, while supplies last
 				</Subtitle>
 			</section>
 		</div>
