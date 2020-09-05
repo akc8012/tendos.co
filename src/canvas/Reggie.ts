@@ -5,8 +5,8 @@ import { getRandomVelocity, Vector, Size } from './math';
 import reggieImage from '../assets/reggie.png';
 
 
-export const SCALE_FACTOR = 0.2;
-export const SCALE_RANDOMIZER = 0.01;
+export const SCALE_FACTOR = 0.6;
+export const SCALE_RANDOMIZER = 0.5;
 
 export interface IReggie {
 	update: (canvasSize: Size) => void;
@@ -24,11 +24,12 @@ export class Reggie implements IReggie {
 		this.bitmap.y = random(0, canvasSize.height);
 
 		const scaleBounds = [
-			SCALE_FACTOR - SCALE_RANDOMIZER,
+			SCALE_FACTOR - SCALE_RANDOMIZER + 0.4,
 			SCALE_FACTOR + SCALE_RANDOMIZER
 		];
-		this.bitmap.scaleX = random(scaleBounds[0], scaleBounds[1]);
-		this.bitmap.scaleY = random(scaleBounds[0], scaleBounds[1]);
+		const scale = random(scaleBounds[0], scaleBounds[1]);
+		this.bitmap.scaleX = scale;
+		this.bitmap.scaleY = scale;
 
 		// TODO: Fix this with math https://math.stackexchange.com/questions/60718/given-a-width-height-and-angle-of-a-rectangle-and-an-allowed-final-size-deter
 		// this.bitmap.rotation = random(0, 359);
@@ -57,8 +58,8 @@ export class Reggie implements IReggie {
 
 	getSize(): Size {
 		return {
-			width: this.bitmap.image.width * SCALE_FACTOR,
-			height: this.bitmap.image.height * SCALE_FACTOR
+			width: this.bitmap.image.width * this.bitmap.scaleX,
+			height: this.bitmap.image.height * this.bitmap.scaleY
 		};
 	}
 }

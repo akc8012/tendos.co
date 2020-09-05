@@ -3,7 +3,7 @@ import { createStage } from './createStage';
 import { IReggie, Reggie } from "./Reggie";
 
 
-const REGGIE_COUNT = 8;
+const REGGIE_COUNT = 7;
 
 export function initializeReggies() {
 	const stage = createStage();
