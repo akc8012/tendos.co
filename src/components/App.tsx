@@ -12,11 +12,16 @@ export function App() {
 				<Header />
 
 				<div class='container has-text-centered'>
-					<EpisodeHeader />
+					<EpisodeHeader>
+						<b>Confirmed:</b> <b class='has-text-danger'>StarCraft 64</b> is coming to <b>Switch</b>
+					</EpisodeHeader>
+
 					<EpisodePlayer filename='tendos-episode104.mp3' />
 				</div>
 
-				<Subtitle />
+				<Subtitle>
+					listen in. it's the benny episode.
+				</Subtitle>
 			</section>
 		</div>
 	);

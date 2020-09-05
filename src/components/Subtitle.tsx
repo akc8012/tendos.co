@@ -1,11 +1,11 @@
 import { h } from 'preact';
 
 
-export function Subtitle() {
+export function Subtitle(props: { children: any }) {
 	return (
 		<div class='container has-text-centered'>
 			<h4 class='subtitle is-4'>
-				listen in. it's the benny episode.
+				{props.children}
 			</h4>
 		</div>
 	);
