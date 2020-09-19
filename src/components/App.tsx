@@ -19,14 +19,13 @@ export function App() {
 					<EpisodePlayer filename='tendos-episode106.mp3' />
 				</div>
 
-				{/* TODO: YouTube link */}
-				{/* <div class='container'>
-					<form action='https://youtu.be/9O7siFWaSvs' method='get' target='_blank'>
+				<div class='container'>
+					<form action='https://youtu.be/eT_BLr3pa0M' method='get' target='_blank'>
 						<button class='button has-background-white-ter' type='submit'>
 							Listen on <b class='has-text-danger'>YouTube</b>
 						</button>
 					</form>
-				</div> */}
+				</div>
 
 				<Subtitle>
 					if you like these things, tune into the <b class='has-text-danger'>Tendos™</b> <b>Podcast®</b>
