@@ -13,22 +13,23 @@ export function App() {
 
 				<div class='container has-text-centered'>
 					<EpisodeHeader>
-						let's talk about <b class='has-text-danger'>super mario</b> for <b>30 minutes straight</b>
+						<b class='has-text-danger'>Monster Hunter</b> and also <b class='has-text-danger'>Super Mario</b>
 					</EpisodeHeader>
 
-					<EpisodePlayer filename='tendos-episode105.mp3' />
+					<EpisodePlayer filename='tendos-episode106.mp3' />
 				</div>
 
-				<div class='container'>
+				{/* TODO: YouTube link */}
+				{/* <div class='container'>
 					<form action='https://youtu.be/9O7siFWaSvs' method='get' target='_blank'>
 						<button class='button has-background-white-ter' type='submit'>
 							Listen on <b class='has-text-danger'>YouTube</b>
 						</button>
 					</form>
-				</div>
+				</div> */}
 
 				<Subtitle>
-					this is a <i>limited release</i> podcast, while supplies last
+					if you like these things, tune into the <b class='has-text-danger'>Tendos™</b> <b>Podcast®</b>
 				</Subtitle>
 			</section>
 		</div>
