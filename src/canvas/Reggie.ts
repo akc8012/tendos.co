@@ -5,8 +5,8 @@ import { getRandomVelocity, Vector, Size } from './math';
 import reggieImage from '../assets/reggie.png';
 
 
-export const SCALE_FACTOR = 0.6;
-export const SCALE_RANDOMIZER = 0.5;
+export const SCALE_FACTOR = 0.1;
+export const SCALE_RANDOMIZER = 0.3;
 
 export interface IReggie {
 	update: (canvasSize: Size) => void;
